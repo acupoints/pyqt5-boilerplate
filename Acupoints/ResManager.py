@@ -78,7 +78,7 @@ class ResManager():
     def entry(self, source_file, contents="App", encoding="utf-8"):
         import re
         base_class = "QWidget"
-        if contents.startswith("Qmf"):
+        if contents.startswith("Qfr"):
             base_class = "QMainWindow"
         # Create a template file
         new_data = []
