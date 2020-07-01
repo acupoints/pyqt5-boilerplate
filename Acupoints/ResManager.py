@@ -77,6 +77,10 @@ class ResManager():
 
     def entry(self, source_file, contents="App", encoding="utf-8"):
         import re
+        base_class = "QWidget"
+        if contents.startswith("Qmf"):
+            base_class = "QMainWindow"
+        # Create a template file
         new_data = []
         raw_data = []
         if contents.title() == "App":
@@ -87,7 +91,7 @@ from PyQt5.QtGui import *
 from PyQt5.QtWidgets import *
 import sys
 
-class Ui_{1}(QWidget):
+class Ui_{1}({2}):
     # Custom signal with a str type parameter
     packed_signal_btn_clicked = pyqtSignal(str)
 
@@ -119,7 +123,7 @@ if __name__ == "__main__":
     {0} = Ui_{1}()
     {0}.show()
     sys.exit(app.exec_())
-    # pass""".format(class_name.lower(), class_name))
+    # pass""".format(class_name.lower(), class_name, base_class))
         new_data = new_data + raw_data
 
         self.write(source_file, "\n".join(new_data), encoding=encoding)
