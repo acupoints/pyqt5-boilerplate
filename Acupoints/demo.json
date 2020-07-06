@@ -1,0 +1,14 @@
+{
+    "age": 32,
+    "occupation": null,
+    "has_used": true,
+    "full_name": "gullies",
+    "skills": [
+        "python",
+        "ruby",
+        "shell",
+        "node",
+        "lua",
+        "go"
+    ]
+}

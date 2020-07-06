@@ -1,4 +1,4 @@
-from Acupoints.ResManager import ResManager
+from Acupoints.SrcManager import SrcManager
 import sys
 
 def remove_symbols(plain_text):
@@ -15,14 +15,14 @@ def remove_symbols(plain_text):
 
 
 arg_count = len(sys.argv)
-rm = ResManager()
+srcMan = SrcManager()
 
 if arg_count == 2:
     if sys.argv[0] == "acupoint.py" and sys.argv[1].lower() == "purify":
         # Add a whitelist of class name prompts
         source_file = ".pylintrc"
-        rm.write(source_file, "extension-pkg-whitelist=PyQt5")
-        rm.view(source_file)
+        srcMan.write(source_file, "extension-pkg-whitelist=PyQt5")
+        srcMan.view(source_file)
     else:
         print("## The provided predicate is not supported yet")
         print("## Please provide appropriate parameters")
@@ -33,9 +33,9 @@ elif arg_count == 3:
             # Add startup code
             words_text = sys.argv[2]
             source_file = words_text
-            rm.replace(source_file)
-            rm.append(source_file)
-            rm.view(source_file)
+            srcMan.replace(source_file)
+            srcMan.append(source_file)
+            srcMan.view(source_file)
 
         else:
             if "_" in sys.argv[2]:
@@ -47,8 +47,8 @@ elif arg_count == 3:
             words_text = remove_symbols(words_text)
             entry_class = words_text
             source_file = "{}.py".format(entry_class)
-            rm.entry(source_file, entry_class)
-            rm.view(source_file)
+            srcMan.entry(source_file, entry_class)
+            srcMan.view(source_file)
     else:
         print("## The provided predicate is not supported yet")
         print("## Please provide appropriate parameters")

@@ -1,5 +1,6 @@
-class ResManager():
+class SrcManager():
     def view(self, source_file, encoding="utf-8"):
+        "# gullies"
         data = self.read(source_file, encoding=encoding)
 
         for data_el_index in range(len(data)):
@@ -8,6 +9,7 @@ class ResManager():
         return data
 
     def read(self, source_file, encoding="utf-8"):
+        "# gullies"
         import os
         data = []
         if os.path.exists(source_file):
@@ -17,10 +19,12 @@ class ResManager():
         return data
 
     def write(self, source_file, contents, encoding="utf-8"):
+        "# gullies"
         with open(source_file, 'w', encoding=encoding) as f:
             f.writelines(contents)
 
     def append(self, source_file, contents="__main__", encoding="utf-8"):
+        "# gullies"
         import re
         new_data = []
         raw_data = self.read(source_file, encoding=encoding)
@@ -51,6 +55,7 @@ class ResManager():
         self.write(source_file, "\n".join(new_data), encoding=encoding)
 
     def replace(self, source_file, contents="(object):", encoding="utf-8"):
+        "# gullies"
         import re
         new_data = []
         raw_data = self.read(source_file, encoding=encoding)
@@ -76,6 +81,7 @@ class ResManager():
         self.write(source_file, "\n".join(new_data), encoding=encoding)
 
     def entry(self, source_file, contents="App", encoding="utf-8"):
+        "# gullies"
         import re
         base_class = "QWidget"
         if contents.startswith("Qfr"):
@@ -129,7 +135,7 @@ if __name__ == "__main__":
         self.write(source_file, "\n".join(new_data), encoding=encoding)
 
 if __name__ == "__main__":
-    rm = ResManager()
+    rm = SrcManager()
     # Create entry class
     entry_class = "MainFrame"
     source_file = "{}.py".format(entry_class)
